@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../Header/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveReadBook } from "../../../utility/localStorage";
+import { saveReadBook, saveWishlistBook } from "../../../utility/localStorage";
 
 const BookDetails = () => {
   const { bookId } = useParams();
@@ -24,6 +24,10 @@ const BookDetails = () => {
 
   const handleReadBook = () => {
     saveReadBook(parseId);
+  };
+
+  const handleWishlistBook = () => {
+    saveWishlistBook(parseId);
   };
 
   return (
@@ -95,7 +99,9 @@ const BookDetails = () => {
               className='border-2 border-[#1313134D] cursor-pointer px-7 py-4 rounded-lg text-[#131313] work-sans text-lg font-semibold'>
               Read
             </a>
-            <a className='bg-[#59C6D2] border-2 br cursor-pointer px-7 py-4 rounded-lg border-[#59C6D2] text-white work-sans text-lg font-semibold'>
+            <a
+              onClick={handleWishlistBook}
+              className='bg-[#59C6D2] border-2 br cursor-pointer px-7 py-4 rounded-lg border-[#59C6D2] text-white work-sans text-lg font-semibold'>
               Wishlist
             </a>
           </div>

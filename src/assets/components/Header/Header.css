@@ -1,0 +1,10 @@
+ul li a.active {
+  color: #23be0a !important;
+  border: 1px solid #23be0a;
+  background-color: white !important;
+  border-radius: 8px;
+  font-weight: 600;
+}
+ul li a:hover {
+  background-color: #fff !important;
+}

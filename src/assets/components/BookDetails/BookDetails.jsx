@@ -1,5 +1,8 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../Header/Header";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { saveReadBook } from "../../../utility/localStorage";
 
 const BookDetails = () => {
   const { bookId } = useParams();
@@ -18,6 +21,11 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = bookDetail;
+
+  const handleReadBook = () => {
+    saveReadBook(parseId);
+  };
+
   return (
     <section className='max-w-screen-xl mx-auto'>
       <Header />
@@ -82,7 +90,9 @@ const BookDetails = () => {
             </p>
           </div>
           <div className='mt-8 space-x-4'>
-            <a className='border-2 border-[#1313134D] cursor-pointer px-7 py-4 rounded-lg text-[#131313] work-sans text-lg font-semibold'>
+            <a
+              onClick={handleReadBook}
+              className='border-2 border-[#1313134D] cursor-pointer px-7 py-4 rounded-lg text-[#131313] work-sans text-lg font-semibold'>
               Read
             </a>
             <a className='bg-[#59C6D2] border-2 br cursor-pointer px-7 py-4 rounded-lg border-[#59C6D2] text-white work-sans text-lg font-semibold'>
@@ -91,6 +101,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };

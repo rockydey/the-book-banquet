@@ -1,9 +1,13 @@
-import { useLoaderData } from "react-router-dom";
 import Book from "../Book/Book";
+import { useEffect, useState } from "react";
 
 const Books = () => {
-  const books = useLoaderData();
-  //   console.log(books);
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    fetch("books.json")
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  }, []);
   return (
     <section>
       <h1 className='playfair text-[#131313] text-4xl font-bold text-center mb-10'>

@@ -35,12 +35,42 @@ const ListedBooks = () => {
     }
   }, []);
 
+  const handleSort = (event) => {
+    if (event.target.value === "1") {
+      const result = [...readBooks].sort((a, b) => b.rating - a.rating);
+      setReadBooks(result);
+    }
+    if (event.target.value === "2") {
+      const result = [...readBooks].sort((a, b) => b.totalPages - a.totalPages);
+      setReadBooks(result);
+    }
+    if (event.target.value === "3") {
+      const result = [...readBooks].sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      setReadBooks(result);
+    }
+  };
+
   return (
     <div className='max-w-screen-xl mx-auto'>
       <Header />
       <h3 className='text-3xl text-[#131313] font-bold work-sans text-center py-8 bg-[#1313130D] rounded-2xl my-9'>
         Books
       </h3>
+      <div className='mt-8 mb-10 text-center'>
+        <select
+          defaultValue='Sort By'
+          className='select text-[#FFFFFF] text-lg focus:outline-none work-sans font-medium bg-[#23BE0A] rounded-lg'
+          onChange={handleSort}>
+          <option disabled defaultValue='Sort By'>
+            Sort By
+          </option>
+          <option value='1'>Rating</option>
+          <option value='2'>Number of Pages</option>
+          <option value='3'>Publish Year</option>
+        </select>
+      </div>
       <div role='tablist' className='tabs tabs-lifted'>
         <input
           type='radio'
@@ -71,12 +101,14 @@ const ListedBooks = () => {
         <div
           role='tabpanel'
           className='tab-content bg-base-100 border-base-300 border-s-0 border-b-0 border-e-0 rounded-box py-6'>
-            <div>
+          <div>
             {wishlistBooks.map((wishlistBook) => (
-              <ReadBook key={wishlistBook.bookId} readBook={wishlistBook}></ReadBook>
+              <ReadBook
+                key={wishlistBook.bookId}
+                readBook={wishlistBook}></ReadBook>
             ))}
           </div>
-          </div>
+        </div>
       </div>
     </div>
   );

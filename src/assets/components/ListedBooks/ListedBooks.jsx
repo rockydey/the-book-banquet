@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Header from "../Header/Header";
 import { useEffect, useState } from "react";
+import { IoIosArrowDropdown } from "react-icons/io";
 import {
   getStoredReadBook,
   getStoredWishlistBook,
@@ -11,6 +12,7 @@ const ListedBooks = () => {
   const books = useLoaderData();
   const [readBooks, setReadBooks] = useState([]);
   const [wishlistBooks, setWishlistBooks] = useState([]);
+  const [sortName, setSortName] = useState("Sort By");
   useEffect(() => {
     const storedReadBooksId = getStoredReadBook();
     const storedWishlistBooksId = getStoredWishlistBook();
@@ -33,18 +35,22 @@ const ListedBooks = () => {
       }
       setWishlistBooks(booksWishlist);
     }
+    setSortName("Sort By");
   }, []);
 
-  const handleSort = (event) => {
-    if (event.target.value === "1") {
+  const handleSort = (target) => {
+    if (target === 1) {
+      setSortName("Rating");
       const result = [...readBooks].sort((a, b) => b.rating - a.rating);
       setReadBooks(result);
     }
-    if (event.target.value === "2") {
+    if (target === 2) {
+      setSortName("Number of Pages");
       const result = [...readBooks].sort((a, b) => b.totalPages - a.totalPages);
       setReadBooks(result);
     }
-    if (event.target.value === "3") {
+    if (target === 3) {
+      setSortName("Publish Year");
       const result = [...readBooks].sort(
         (a, b) => b.yearOfPublishing - a.yearOfPublishing
       );
@@ -59,17 +65,28 @@ const ListedBooks = () => {
         Books
       </h3>
       <div className='mt-8 mb-10 text-center'>
-        <select
-          defaultValue='Sort By'
-          className='select text-[#FFFFFF] text-lg focus:outline-none work-sans font-medium bg-[#23BE0A] rounded-lg'
-          onChange={handleSort}>
-          <option disabled defaultValue='Sort By'>
-            Sort By
-          </option>
-          <option value='1'>Rating</option>
-          <option value='2'>Number of Pages</option>
-          <option value='3'>Publish Year</option>
-        </select>
+        <div className='dropdown dropdown-bottom flex flex-col items-center'>
+          <div
+            tabIndex={0}
+            role='button'
+            className='flex gap-3 items-center px-10 py-4 text-[#FFFFFF] text-lg focus:outline-none work-sans font-medium bg-[#23BE0A] rounded-lg'>
+            <p>{sortName ? sortName : "Sort By"}</p>
+            <IoIosArrowDropdown className='text-xl' />
+          </div>
+          <ul
+            tabIndex={0}
+            className='dropdown-content z-[1] menu shadow rounded-b-xl bg-[#1313130D] text-[#131313CC] text-base font-medium w-44 space-y-2'>
+            <li className='cursor-pointer' onClick={() => handleSort(1)}>
+              Rating
+            </li>
+            <li className='cursor-pointer' onClick={() => handleSort(2)}>
+              Number of Pages
+            </li>
+            <li className='cursor-pointer' onClick={() => handleSort(3)}>
+              Publish Year
+            </li>
+          </ul>
+        </div>
       </div>
       <div role='tablist' className='tabs tabs-lifted'>
         <input

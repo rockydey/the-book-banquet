@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
-import bookClubImg from "../../images/join-forum.png";
-import discussionImg from "../../images/book-club.jpg";
+import bookClubImg from "../../assets/images/join-forum.png";
+import discussionImg from "../../assets/images/book-club.jpg";
 
 const BookClub = () => {
   return (

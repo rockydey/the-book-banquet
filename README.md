@@ -2,7 +2,7 @@
 
 It is a online book reading website, where we can read all famous books.
 
-### Live Website: (https://www.google.com/)
+### Live Website: (https://the-book-banquet.netlify.app/)
 
 #### Feature of this website
 - Navigate different pages using dynamic Navbar.

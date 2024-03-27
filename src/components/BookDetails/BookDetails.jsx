@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../Header/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveReadBook, saveWishlistBook } from "../../../utility/localStorage";
+import { saveReadBook, saveWishlistBook } from "../../utility/localStorage";
 
 const BookDetails = () => {
   const { bookId } = useParams();

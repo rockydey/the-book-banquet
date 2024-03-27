@@ -2,11 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import Header from "../Header/Header";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
+import ReadBook from "../ReadBook/ReadBook";
 import {
   getStoredReadBook,
   getStoredWishlistBook,
-} from "../../../utility/localStorage";
-import ReadBook from "../ReadBook/ReadBook";
+} from "../../utility/localStorage";
 
 const ListedBooks = () => {
   const books = useLoaderData();

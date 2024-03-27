@@ -10,8 +10,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useEffect, useState } from "react";
-import { getStoredReadBook } from "../../../utility/localStorage";
 import "./PagesToRead.css";
+import { getStoredReadBook } from "../../utility/localStorage";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 

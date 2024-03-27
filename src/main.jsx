@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./assets/components/Home/Home";
-import ListedBooks from "./assets/components/ListedBooks/ListedBooks";
-import PagesToRead from "./assets/components/PagesToRead/PagesToRead";
-import BookDetails from "./assets/components/BookDetails/BookDetails";
-import NotFound from "./assets/components/NotFound/NotFound";
-import BookClub from "./assets/components/BookClub/BookClub";
-import Blogs from "./assets/components/Blogs/Blogs";
+import Home from "./components/Home/Home";
+import ListedBooks from "./components/ListedBooks/ListedBooks";
+import PagesToRead from "./components/PagesToRead/PagesToRead";
+import BookDetails from "./components/BookDetails/BookDetails";
+import BookClub from "./components/BookClub/BookClub";
+import Blogs from "./components/Blogs/Blogs";
+import NotFound from "./components/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {

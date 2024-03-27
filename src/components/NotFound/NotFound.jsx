@@ -1,5 +1,5 @@
 import Header from "../Header/Header";
-import notFoundImg from "../../images/404.jpg";
+import notFoundImg from "../../assets/images/404.jpg";
 
 const NotFound = () => {
   return (

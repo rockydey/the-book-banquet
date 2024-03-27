@@ -11,7 +11,7 @@ const Book = ({ book }) => {
       onClick={() => navigate(`/book/${bookId}`)}
       className='card p-6 rounded-2xl border border-[#13131326] cursor-pointer'>
       <div className='bg-[#F3F3F3] rounded-2xl flex justify-center px-24 py-8'>
-        <img src={image} alt='book image' />
+        <img src={image} className="h-[166px]" alt='book image' />
       </div>
       <div className='card-body px-0'>
         <div className='flex gap-3 mt-6'>

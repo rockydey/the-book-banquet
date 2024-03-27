@@ -13,6 +13,9 @@ const Header = () => {
       <li>
         <NavLink to='/pages-read'>Pages To Read</NavLink>
       </li>
+      <li>
+        <NavLink to='/book-club'>Book Club</NavLink>
+      </li>
     </>
   );
 

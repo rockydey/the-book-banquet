@@ -38,6 +38,11 @@ const Blogs = () => {
             <Blog key={blog.id} blog={blog}></Blog>
           ))}
         </div>
+        <div className='text-center'>
+          <button className='bg-white uppercase inline-block cursor-pointer px-7 py-4 rounded-lg border-2 border-[#23BE0A] text-[#23BE0A] work-sans text-lg font-semibold mt-10'>
+            See More Blogs
+          </button>
+        </div>
       </section>
     </div>
   );

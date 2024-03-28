@@ -67,7 +67,7 @@ const BookDetails = () => {
             </div>
           </div>
           <div className='border border-solid border-[#13131326]'></div>
-          <div className='mt-6 grid grid-cols-2 gap-y-3 w-1/2'>
+          <div className='mt-6 grid grid-cols-2 gap-y-3 w-full lg:w-1/2'>
             <p className='text-[#131313B3] work-sans text-base font-normal'>
               Number of Pages:{" "}
             </p>

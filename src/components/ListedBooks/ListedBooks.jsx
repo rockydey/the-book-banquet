@@ -3,6 +3,8 @@ import Header from "../Header/Header";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import ReadBook from "../ReadBook/ReadBook";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import {
   getStoredReadBook,
   getStoredWishlistBook,
@@ -41,20 +43,35 @@ const ListedBooks = () => {
   const handleSort = (target) => {
     if (target === 1) {
       setSortName("Rating");
-      const result = [...readBooks].sort((a, b) => b.rating - a.rating);
-      setReadBooks(result);
+      const result1 = [...readBooks].sort((a, b) => b.rating - a.rating);
+      setReadBooks(result1);
+
+      const result2 = [...wishlistBooks].sort((a, b) => b.rating - a.rating);
+      setWishlistBooks(result2);
     }
     if (target === 2) {
       setSortName("Number of Pages");
-      const result = [...readBooks].sort((a, b) => b.totalPages - a.totalPages);
-      setReadBooks(result);
+      const result1 = [...readBooks].sort(
+        (a, b) => b.totalPages - a.totalPages
+      );
+      setReadBooks(result1);
+
+      const result2 = [...wishlistBooks].sort(
+        (a, b) => b.totalPages - a.totalPages
+      );
+      setWishlistBooks(result2);
     }
     if (target === 3) {
       setSortName("Publish Year");
-      const result = [...readBooks].sort(
+      const result1 = [...readBooks].sort(
         (a, b) => b.yearOfPublishing - a.yearOfPublishing
       );
-      setReadBooks(result);
+      setReadBooks(result1);
+
+      const result2 = [...wishlistBooks].sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      setWishlistBooks(result2);
     }
   };
 
@@ -75,7 +92,7 @@ const ListedBooks = () => {
           </div>
           <ul
             tabIndex={0}
-            className='dropdown-content z-[1] menu shadow rounded-b-xl bg-[#1313130D] text-[#131313CC] text-base font-medium w-44 space-y-2'>
+            className='dropdown-content z-[1] menu shadow rounded-b-xl bg-white  md:bg-[#1313130D] text-[#131313CC] text-base font-medium w-44 space-y-2'>
             <li className='cursor-pointer' onClick={() => handleSort(1)}>
               Rating
             </li>
@@ -88,36 +105,28 @@ const ListedBooks = () => {
           </ul>
         </div>
       </div>
-      <div role='tablist' className='tabs tabs-lifted'>
-        <input
-          type='radio'
-          name='my_tabs_2'
-          role='tab'
-          className='tab text-[#13131380] focus:text-[#131313CC] work-sans text-lg font-normal'
-          aria-label='Read Books'
-          checked
-          readOnly
-        />
-        <div
-          role='tabpanel'
-          className='tab-content bg-base-100 border-base-300 border-s-0 border-b-0 border-e-0 rounded-box py-6'>
+      <Tabs>
+        <TabList>
+          <Tab>
+            <p className='text-[#131313] work-sans text-lg font-normal'>
+              Read Books
+            </p>
+          </Tab>
+          <Tab>
+            <p className='text-[#131313] work-sans text-lg font-normal'>
+              Wishlist Books
+            </p>
+          </Tab>
+        </TabList>
+
+        <TabPanel>
           <div>
             {readBooks.map((readBook) => (
               <ReadBook key={readBook.bookId} readBook={readBook}></ReadBook>
             ))}
           </div>
-        </div>
-
-        <input
-          type='radio'
-          name='my_tabs_2'
-          role='tab'
-          className='tab text-[#13131380] focus:text-[#131313CC] work-sans text-lg font-normal'
-          aria-label='Wishlist Books'
-        />
-        <div
-          role='tabpanel'
-          className='tab-content bg-base-100 border-base-300 border-s-0 border-b-0 border-e-0 rounded-box py-6'>
+        </TabPanel>
+        <TabPanel>
           <div>
             {wishlistBooks.map((wishlistBook) => (
               <ReadBook
@@ -125,8 +134,8 @@ const ListedBooks = () => {
                 readBook={wishlistBook}></ReadBook>
             ))}
           </div>
-        </div>
-      </div>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 };
